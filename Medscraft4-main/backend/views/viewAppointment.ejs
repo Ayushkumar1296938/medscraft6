@@ -1,0 +1,16 @@
+<%- include('layout.ejs') %>
+
+<div class="formbg">
+    <div class="padding-horizontal--48">
+        <h3 class="padding-bottom--15">Appointment Details</h3>
+        <p><strong>Patient:</strong> <%= appointment.patient ? appointment.patient.name : 'Unknown Patient' %></p>
+        <p><strong>Doctor:</strong> <%= appointment.doctor ? appointment.doctor.name : 'Unknown Doctor' %></p>
+        <p><strong>Date:</strong> <%= new Date(appointment.date).toLocaleString() %></p>
+        <p><strong>Reason:</strong> <%= appointment.reason %></p>
+        <a href="/api/appointments/update/<%= appointment._id %>" class="btn btn-warning">Edit</a>
+        <form action="/api/appointments/<%= appointment._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        <a href="/api/appointments" class="btn">Back to Appointments</a>
+    </div>
+</div>

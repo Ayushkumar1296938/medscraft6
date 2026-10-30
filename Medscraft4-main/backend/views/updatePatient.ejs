@@ -1,0 +1,24 @@
+<%- include('layout.ejs') %>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Update Patient</h3>
+    </div>
+    <div class="card-body">
+        <form action="/api/patients/<%= patient._id %>?_method=PUT" method="POST">
+            <div class="mb-3">
+                <label for="patientName" class="form-label">Patient Name</label>
+                <input type="text" class="form-control" id="patientName" name="patientName" value="<%= patient.name %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="dob" value="<%= patient.dob.toISOString().split('T')[0] %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="<%= patient.email %>" required>
+            </div>
+            <button type="submit" class="btn">Update Patient</button>
+        </form>
+    </div>
+</div>

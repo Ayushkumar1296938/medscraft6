@@ -1,0 +1,14 @@
+<%- include('layout.ejs') %>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Delete Doctor</h3>
+    </div>
+    <div class="card-body">
+        <p>Are you sure you want to delete the doctor <%= doctor.name %>?</p>
+        <form action="/api/doctors/<%= doctor._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Delete Doctor</button>
+            <a href="/api/doctors" class="btn">Cancel</a>
+        </form>
+    </div>
+</div>

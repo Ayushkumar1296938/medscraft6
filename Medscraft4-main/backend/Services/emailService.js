@@ -1,0 +1,36 @@
+
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST || "smtp.gmail.com",
+  port: Number(process.env.SMTP_PORT) || 587,
+  secure: Number(process.env.SMTP_PORT) === 465,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
+
+const sendEmail = async (options) => {
+  try {
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      throw new Error("SMTP_USER or SMTP_PASS is missing in .env");
+    }
+
+    const info = await transporter.sendMail({
+      from: process.env.SMTP_USER,
+      ...options,
+    });
+
+    console.log("Email sent successfully:", info.messageId);
+    return info;
+  } catch (error) {
+    console.error("Email sending failed:", error.message);
+    throw error;
+  }
+};
+
+export { sendEmail };

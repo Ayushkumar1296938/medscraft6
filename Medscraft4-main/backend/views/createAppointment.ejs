@@ -1,0 +1,30 @@
+<%- include('layout.ejs') %>
+
+<div class="formbg">
+    <div class="padding-horizontal--48">
+        <h3>Create Appointment</h3>
+        <form action="/api/appointments" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            
+            <div class="mb-3">
+                <label for="patientName" class="form-label">Patient Name</label>
+                <input type="text" class="form-control" id="patientName" name="patientName" required>
+            </div>
+            <div class="mb-3">
+                <label for="doctorName" class="form-label">Doctor Name</label>
+                <input type="text" class="form-control" id="doctorName" name="doctorName" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="datetime-local" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="reason" class="form-label">Reason</label>
+                <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
+            </div>
+            <div class="padding-top--24">
+                <button type="submit" class="btn">Create Appointment</button>
+            </div>
+        </form>
+    </div>
+</div>

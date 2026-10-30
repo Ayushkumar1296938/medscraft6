@@ -1,0 +1,28 @@
+
+# Dependencies
+**/node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+**/build/
+**/dist/
+out/
+tmp/
+
+# Logs
+logs/
+*.log
+
+# Editor and IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
